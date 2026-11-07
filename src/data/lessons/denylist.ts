@@ -1,0 +1,47 @@
+/**
+ * Names that must not appear in lesson content: employers, clients and consumer brands, because a lesson
+ * teaches a technology and must not read like a story about a real company or an invented case study.
+ * Technology vendors and products are fine when they name the technology being taught (AWS, Oracle's JDK,
+ * Google's V8, Microsoft's TypeScript), so those are NOT here. Matched as whole words, case sensitive.
+ * It cannot find every company; an invented case study is still an editorial matter. It is data: extend it.
+ */
+export const LESSON_DENIED_NAMES: readonly string[] = [
+  "Alphabet",
+  "Facebook",
+  "Instagram",
+  "WhatsApp",
+  "Netflix",
+  "Tesla",
+  "Uber",
+  "Airbnb",
+  "Salesforce",
+  "Twitter",
+  "LinkedIn",
+  "Spotify",
+  "TCS",
+  "Infosys",
+  "Wipro",
+  "HCL",
+  "Accenture",
+  "Cognizant",
+  "Capgemini",
+  "Deloitte",
+  "Tech Mahindra",
+  "Mphasis",
+  "Flipkart",
+  "Zomato",
+  "Swiggy",
+  "Paytm",
+  "Ola",
+  "Myntra",
+  "Walmart",
+  "PhonePe",
+  "Razorpay",
+  "Zoho",
+  "Freshworks",
+  "McKinsey",
+  "Goldman Sachs",
+  "JP Morgan",
+  "JPMorgan",
+  "Morgan Stanley",
+]

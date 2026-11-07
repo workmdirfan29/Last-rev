@@ -1,0 +1,47 @@
+// src/data/projects/hello-cli.ts   (the file name is the project id)
+import { defineProject } from "@/data/projects/author"
+
+export default defineProject({
+  id: "hello-cli",
+  kind: "mini", // "mini" is 2-16 hours, "major" is 20-120 hours (the gate checks)
+  title: "Greeting command line tool",
+  summary: "A small command line program that asks for a name and a language and prints a greeting.",
+  hours: 4,
+  // where it is offered: a roadmap and the phase number it belongs to
+  roadmaps: [{ roadmapId: "java-full-stack-ai", phase: 1 }],
+  // lessons (ids) it builds on; each must exist
+  buildsOn: ["lesson.java-core.first-program", "lesson.java-core.variables-and-operators"],
+  userStories: [
+    "As a user, I run the program and it asks for my name.",
+    "As a user, I choose English or Hindi and get the greeting in that language.",
+    "As a user, I see a friendly message if I type nothing.",
+  ],
+  requirements: [
+    "The program reads a name and a language choice from the keyboard.",
+    "It prints a greeting built from both.",
+    "An empty name is handled without a crash.",
+  ],
+  structure: ["hello-cli/", "  src/Greeter.java", "  src/Main.java", "  README.md"],
+  steps: [
+    {
+      title: "Print a fixed greeting",
+      summary: "Get a program compiling and running before adding input.",
+      acceptance: ["It compiles with no errors", "It prints a greeting when run"],
+      afterLessons: ["lesson.java-core.first-program"],
+    },
+    {
+      title: "Read the name",
+      summary: "Read a line of text and use it in the greeting.",
+      acceptance: ["It asks for a name", "The name appears in the greeting"],
+      afterLessons: ["lesson.java-core.variables-and-operators"],
+    },
+    {
+      title: "Choose a language and handle empty input",
+      summary: "Offer two languages and a polite message for an empty name.",
+      acceptance: ["Both languages work", "An empty name does not crash", "The README says how to run it"],
+      afterLessons: [],
+    },
+  ],
+  stretch: ["Add a third language", "Remember the last name in a file"],
+  resources: [{ label: "The Java Tutorials: Basic I/O", url: "https://docs.oracle.com/javase/tutorial/essential/io/index.html" }],
+})

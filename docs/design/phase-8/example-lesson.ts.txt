@@ -1,0 +1,96 @@
+import { lessonSchema, type AuthoredLesson } from "@/types/lesson"
+
+// src/data/lessons/java-core/01-first-program.ts  (file name = NN-<slug>.ts; NN is the order inside the module)
+const lesson: AuthoredLesson = {
+  slug: "first-program",
+  title: "Your first Java program",
+  topic: "Basics",
+  minutes: 40,
+  overview: "Write, compile and run a small Java program, and learn what each line of it does.",
+  objectives: [
+    "Explain what `main` is and why Java starts there",
+    "Compile a `.java` file and run the result from the command line",
+  ],
+  prerequisites: [],
+  sections: [
+    {
+      kind: "explain",
+      heading: "From source file to running program",
+      body: [
+        "You write Java in a **source file** that ends in `.java`. The compiler `javac` turns it into **bytecode** in a `.class` file, and the `java` command runs that bytecode on the JVM.",
+        "Every program starts at a method called `main`. If a class has no `main`, `java` has nowhere to begin.",
+      ],
+    },
+    {
+      kind: "code",
+      heading: "Hello, Java",
+      example: {
+        title: "A complete program",
+        language: "java",
+        code: 'public class Hello {\n  public static void main(String[] args) {\n    System.out.println("Hello, Java");\n  }\n}',
+        walkthrough: [
+          "`public class Hello` declares a class. The file must be named `Hello.java`.",
+          "`public static void main(String[] args)` is the entry point the JVM calls.",
+          "`System.out.println(...)` prints the text and moves to a new line.",
+        ],
+      },
+    },
+    {
+      kind: "mistakes",
+      items: [
+        { mistake: "Saving the file as `hello.java` while the class is `Hello`.", fix: "Name the file exactly like the public class: `Hello.java`." },
+      ],
+    },
+    {
+      kind: "practical",
+      heading: "A greeting for a user",
+      scenario: "A small command line tool greets whoever runs it.",
+      body: ["Change the printed text, compile again with `javac Hello.java`, then run `java Hello`. Compile after every change: `java` runs the last compiled version."],
+    },
+  ],
+  check: [
+    {
+      type: "single",
+      id: "compiler-output",
+      prompt: "What does `javac Hello.java` produce?",
+      options: ["Hello.class (bytecode)", "Hello.exe", "Hello.txt"],
+      answer: 0,
+      explanation: "`javac` compiles source into bytecode in a `.class` file, which the JVM runs.",
+    },
+    {
+      type: "truefalse",
+      id: "main-needed",
+      statement: "A Java program can start without a `main` method.",
+      answer: false,
+      explanation: "`java` calls `main` to start the program. Without it there is no entry point.",
+    },
+    {
+      type: "output",
+      id: "println-output",
+      code: { language: "java", code: 'System.out.println("A");\nSystem.out.println("B");' },
+      options: ["A then B on two lines", "AB on one line", "Nothing"],
+      answer: 0,
+      explanation: "`println` ends each print with a new line.",
+    },
+  ],
+  assignment: {
+    title: "Greet yourself",
+    task: ["Write a program that prints your name and your city on two lines."],
+    checklist: ["The file name matches the class name", "It compiles with no errors", "It prints two lines"],
+    minutes: 15,
+  },
+  exercises: [
+    {
+      slug: "three-lines",
+      title: "Print three lines",
+      task: ["Print the numbers 1, 2 and 3, each on its own line."],
+      language: "java",
+      starter: "public class Count {\n  public static void main(String[] args) {\n    // your code\n  }\n}",
+      solution: 'public class Count {\n  public static void main(String[] args) {\n    System.out.println(1);\n    System.out.println(2);\n    System.out.println(3);\n  }\n}',
+      checklist: ["I used println, not print", "I compiled and ran it myself"],
+    },
+  ],
+  revisionNotes: ["`javac` compiles, `java` runs", "The entry point is `public static void main(String[] args)`"],
+  resources: [{ label: "The Java Tutorials: A first application", url: "https://docs.oracle.com/javase/tutorial/getStarted/application/index.html" }],
+}
+

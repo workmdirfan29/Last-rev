@@ -1,0 +1,37 @@
+// src/data/research/frontend.ts   (one file per area; the file holds an array)
+import { defineResearch } from "@/data/research/author"
+
+export default defineResearch([  {
+    // an OBSERVED claim: official documentation, with a source you fetched and read
+    id: "react-hooks-state-in-function-components",
+    topic: "State in React function components",
+    area: "frontend",
+    level: "fresher",
+    claim: "React's own documentation teaches state in function components with the useState Hook, so a fresher should be able to explain it.",
+    evidence: {
+      type: "official-documentation",
+      sources: [{ title: "useState", publisher: "React", url: "https://react.dev/reference/react/useState" }],
+    },
+    researchedOn: "2026-11-05",
+    confidence: "high",
+    horizon: 2026,
+    predicted: false,
+  },
+  {
+    // a PREDICTION: shown everywhere with "Prediction, not verified"; typed as a recommendation, never as observed
+    id: "ai-retrieval-basics-2027",
+    topic: "Retrieval-augmented generation basics",
+    area: "ai-integration",
+    level: "intermediate",
+    claim: "Being able to explain how retrieval-augmented generation fits around a language-model API is likely to be useful preparation for AI-integration roles in 2027.",
+    evidence: {
+      type: "preparation-recommendation",
+      sources: [],
+      basis: "It follows from how the official LLM API guides describe retrieval and tool use today; it is a forecast, not a finding.",
+    },
+    researchedOn: "2026-11-05",
+    confidence: "low",
+    horizon: 2027,
+    predicted: true,
+  },
+])
